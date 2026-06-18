@@ -42,9 +42,9 @@ A **Household** groups budgets, envelopes, and accounts at a single-user level. 
 - Can be marked as **recurring within the budget** — e.g. "Electricity bill every 15th of the month" if the budget is monthly
 - Amount can be set to change on a specific date — e.g. insurance bill increases on 1 June
 - Types:
-    - **Scheduled Expense** — money leaving one or more envelopes on a future date
-    - **Scheduled Income** — money entering one or more envelopes on a future date
-    - **Scheduled Transfer** — move money from one or more envelopes to one or more recipient envelopes on a future date
+  - **Scheduled Expense** — money leaving one or more envelopes on a future date
+  - **Scheduled Income** — money entering one or more envelopes on a future date
+  - **Scheduled Transfer** — move money from one or more envelopes to one or more recipient envelopes on a future date
 
 ### Transaction
 
@@ -52,9 +52,9 @@ A **Household** groups budgets, envelopes, and accounts at a single-user level. 
 - Fields: date, amount, description, envelope(s), account, optional payee
 - Directly mutable — edits update the transaction in place
 - Types:
-    - **Expense** — money leaving one or more envelopes (posted)
-    - **Income** — money entering one or more envelopes (posted)
-    - **Transfer** — move money from one or more source envelopes to one or more recipient envelopes (zero-sum)
+  - **Expense** — money leaving one or more envelopes (posted)
+  - **Income** — money entering one or more envelopes (posted)
+  - **Transfer** — move money from one or more source envelopes to one or more recipient envelopes (zero-sum)
 
 ### Payee
 
@@ -198,12 +198,12 @@ Scheduled transactions from the budget (planned)Posted transactions (actual)Vari
 
 ## Envelope States
 
-| State | Condition | Visual |
-| --- | --- | --- |
-| **Healthy** | > 20% of typical periodic income remaining | Green |
-| **Low** | 1–20% remaining | Amber |
-| **Empty** | $0 remaining | Grey |
-| **Overspent** | Negative balance | Red |
+| State         | Condition                                  | Visual |
+| ------------- | ------------------------------------------ | ------ |
+| **Healthy**   | > 20% of typical periodic income remaining | Green  |
+| **Low**       | 1–20% remaining                            | Amber  |
+| **Empty**     | $0 remaining                               | Grey   |
+| **Overspent** | Negative balance                           | Red    |
 
 ---
 
@@ -219,7 +219,7 @@ Scheduled transactions from the budget (planned)Posted transactions (actual)Vari
 8. **Transactions are mutable** — edits directly update the transaction; envelopes recalculate balances.
 9. **Amount overrides** — adjust a single scheduled transaction's amount without changing the recurring schedule.
 10. **Multiple account types** — General (debit), Credit Card, and Loan/Revolving Credit accounts can be linked; envelopes are account-agnostic.
-11. **Interest tiers** — Credit Card and Loan accounts support interest rate changes over time. Each tier specifies a rate effective from a start date to an optional end date. When end\_date is null, the rate remains active until the next tier begins.
+11. **Interest tiers** — Credit Card and Loan accounts support interest rate changes over time. Each tier specifies a rate effective from a start date to an optional end date. When end_date is null, the rate remains active until the next tier begins.
 12. **Interest calculation** — three methods supported:
 
 **Per payment** — interest calculated on each payment**Per period** — interest calculated once per budget period**On unpaid balance** — interest calculated on the outstanding balance as of a specific date (e.g. statement date)

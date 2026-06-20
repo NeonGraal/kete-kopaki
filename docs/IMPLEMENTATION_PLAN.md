@@ -144,3 +144,7 @@ docker/
 4. **Phase 4:** Dashboards, reports, actual vs planned variance.
 5. **Phase 5:** Functional test container and full-stack journey coverage.
 6. **Phase 6:** Hardening, observability, release readiness.
+
+## TODO (Temporary)
+
+- Keep `functional.yml` as **manual-only** (`workflow_dispatch`) until functional suite stability and runtime are acceptable for automatic PR gating.

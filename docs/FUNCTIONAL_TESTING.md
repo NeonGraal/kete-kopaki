@@ -84,13 +84,15 @@ src/frontend/tests/functional/
 
 ## 8. CI Integration Pattern
 
-In CI:
+In CI (current mode is manual trigger only):
 
 1. Build/pull deployment images for the commit SHA.
 2. Start the same compose stack used by `functional-tests`.
 3. Run `functional-tests` container.
 4. Publish artifacts (HTML report, traces, screenshots, videos).
 5. Fail pipeline if functional tests fail.
+
+`functional.yml` currently runs via `workflow_dispatch` only.
 
 ## 9. Exit Criteria
 

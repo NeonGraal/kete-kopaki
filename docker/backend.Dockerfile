@@ -2,9 +2,12 @@ FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 WORKDIR /src
 
 COPY src/backend/KeteKopaki.Api/KeteKopaki.Api.csproj src/backend/KeteKopaki.Api/
+COPY src/backend/KeteKopaki.Application/KeteKopaki.Application.csproj src/backend/KeteKopaki.Application/
+COPY src/backend/KeteKopaki.Domain/KeteKopaki.Domain.csproj src/backend/KeteKopaki.Domain/
+COPY src/backend/KeteKopaki.Infrastructure/KeteKopaki.Infrastructure.csproj src/backend/KeteKopaki.Infrastructure/
 RUN dotnet restore src/backend/KeteKopaki.Api/KeteKopaki.Api.csproj
 
-COPY src/backend/KeteKopaki.Api/ src/backend/KeteKopaki.Api/
+COPY src/backend/ src/backend/
 RUN dotnet publish src/backend/KeteKopaki.Api/KeteKopaki.Api.csproj -c Release -o /app/publish
 
 FROM mcr.microsoft.com/dotnet/aspnet:10.0

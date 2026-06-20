@@ -31,6 +31,6 @@ jobs:
         with:
           node-version: 22
       - name: Install
-        run: npm install
+        run: npm ci
       - name: Frontend smoke test
         run: npm run test:unit

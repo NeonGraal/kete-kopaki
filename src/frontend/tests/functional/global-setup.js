@@ -16,8 +16,8 @@ async function waitFor(url, timeoutMs = 120000) {
 
 module.exports = async () => {
   const baseUrl = process.env.BASE_URL ?? "http://localhost:19006";
-  const apiUrl = process.env.API_URL ?? "http://localhost:8080/health";
+  const apiBaseUrl = process.env.API_URL ?? "http://localhost:8080";
 
   await waitFor(baseUrl);
-  await waitFor(apiUrl);
+  await waitFor(`${apiBaseUrl}/health`);
 };

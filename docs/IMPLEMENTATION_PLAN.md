@@ -19,7 +19,7 @@ docs/
   CI_CD.md
 src/
   backend/
-    KeteKopaki.sln
+    KeteKopaki.slnx
     KeteKopaki.Api/
     KeteKopaki.Application/
     KeteKopaki.Domain/

@@ -1,0 +1,17 @@
+# Node
+node_modules/
+npm-debug.log*
+
+# Build artifacts
+dist/
+coverage/
+artifacts/
+
+# .NET
+bin/
+obj/
+TestResults/
+
+# Editor/system
+.DS_Store
+Thumbs.db

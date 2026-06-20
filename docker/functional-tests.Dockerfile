@@ -7,4 +7,4 @@ WORKDIR /workspace/src/frontend
 
 ENV CI=true
 
-CMD ["sh", "-c", "npm ci && npx playwright install --with-deps chromium && npm run test:functional"]
+CMD ["sh", "-c", "npm install && npx playwright install --with-deps chromium && npm run test:functional"]

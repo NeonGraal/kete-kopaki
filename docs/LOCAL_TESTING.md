@@ -88,3 +88,17 @@ Optional terminal checks:
 2. Screenshot of scheduled transaction management flow.
 3. Screenshot of Aspire trace for transaction posting.
 4. Short checklist in PR description with pass/fail status.
+
+## 8. Optional: Rancher Desktop or Docker Desktop
+
+If you prefer not to use Podman Desktop, either **Rancher Desktop** or **Docker Desktop** can run the same compose files.
+
+1. Ensure your runtime is active:
+   - Rancher Desktop: enable either `dockerd (moby)` or `containerd` with `nerdctl`.
+   - Docker Desktop: start Docker Engine.
+2. Start local dependencies using your runtime:
+   - Docker Desktop (or Rancher Desktop with `dockerd`): `docker compose -f deploy/compose.local.yml up -d`
+   - Rancher Desktop with `containerd`: `nerdctl compose -f deploy/compose.local.yml up -d`
+3. Run functional test containers with equivalent commands:
+   - Docker/Desktop dockerd: `docker compose -f deploy/compose.functional.yml --profile test up --build --abort-on-container-exit functional-tests`
+   - Rancher/containerd: `nerdctl compose -f deploy/compose.functional.yml --profile test up --build --abort-on-container-exit functional-tests`

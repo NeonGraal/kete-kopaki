@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  - pull_request
+  - workflow_dispatch
+
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - name: Restore
+        run: dotnet restore src/backend/KeteKopaki.slnx
+      - name: Build
+        run: dotnet build src/backend/KeteKopaki.slnx --no-restore -c Release
+      - name: Test
+        run: dotnet test src/backend/KeteKopaki.slnx --no-build -c Release
+
+  frontend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: src/frontend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install
+        run: npm ci
+      - name: Frontend smoke test
+        run: npm run test:unit

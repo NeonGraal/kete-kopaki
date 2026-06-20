@@ -1,6 +1,9 @@
 services:
   api:
     image: ghcr.io/neongraal/kete-kopaki-api:${IMAGE_TAG:-local}
+    build:
+      context: ..
+      dockerfile: docker/backend.Dockerfile
     environment:
       ASPNETCORE_ENVIRONMENT: Functional
       ConnectionStrings__Default: Host=postgres;Port=5432;Database=ketekopaki;Username=app;Password=app
@@ -8,11 +11,19 @@ services:
     depends_on:
       - postgres
       - redis
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:8080/health || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
     ports:
       - "8080:8080"
 
   jobs:
     image: ghcr.io/neongraal/kete-kopaki-jobs:${IMAGE_TAG:-local}
+    build:
+      context: ..
+      dockerfile: docker/jobs.Dockerfile
     environment:
       DOTNET_ENVIRONMENT: Functional
       ConnectionStrings__Default: Host=postgres;Port=5432;Database=ketekopaki;Username=app;Password=app
@@ -23,10 +34,14 @@ services:
 
   frontend:
     image: ghcr.io/neongraal/kete-kopaki-frontend:${IMAGE_TAG:-local}
+    build:
+      context: ..
+      dockerfile: docker/frontend.Dockerfile
     environment:
       EXPO_PUBLIC_API_BASE_URL: http://api:8080
     depends_on:
-      - api
+      api:
+        condition: service_healthy
     ports:
       - "19006:19006"
 
@@ -67,7 +82,7 @@ services:
     volumes:
       - ../artifacts/functional:/workspace/artifacts
     command: >
-      sh -c "npm ci &&
+      sh -c "npm install &&
              npx playwright install --with-deps chromium &&
              npm run test:functional"
 

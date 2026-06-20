@@ -1,0 +1,26 @@
+name: Functional Tests
+
+on:
+  - workflow_dispatch
+
+jobs:
+  functional:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run full-stack functional tests
+        run: docker compose -f deploy/compose.functional.yml --profile test up --build --abort-on-container-exit functional-tests
+      - name: Capture container logs
+        if: always()
+        run: docker compose -f deploy/compose.functional.yml logs > functional-compose.log
+      - name: Upload functional artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: functional-artifacts
+          path: |
+            artifacts/functional
+            functional-compose.log
+      - name: Tear down
+        if: always()
+        run: docker compose -f deploy/compose.functional.yml down -v

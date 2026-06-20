@@ -1,0 +1,11 @@
+<Solution>
+  <Project Path="KeteKopaki.Api.IntegrationTests/KeteKopaki.Api.IntegrationTests.csproj" />
+  <Project Path="KeteKopaki.Api/KeteKopaki.Api.csproj" />
+  <Project Path="KeteKopaki.Application.Tests/KeteKopaki.Application.Tests.csproj" />
+  <Project Path="KeteKopaki.Application/KeteKopaki.Application.csproj" />
+  <Project Path="KeteKopaki.ContractTests/KeteKopaki.ContractTests.csproj" />
+  <Project Path="KeteKopaki.Domain.Tests/KeteKopaki.Domain.Tests.csproj" />
+  <Project Path="KeteKopaki.Domain/KeteKopaki.Domain.csproj" />
+  <Project Path="KeteKopaki.Infrastructure/KeteKopaki.Infrastructure.csproj" />
+  <Project Path="KeteKopaki.Jobs/KeteKopaki.Jobs.csproj" />
+</Solution>

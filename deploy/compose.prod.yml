@@ -1,0 +1,21 @@
+services:
+  api:
+    image: ghcr.io/neongraal/kete-kopaki-api:${IMAGE_TAG}
+    restart: always
+    environment:
+      ASPNETCORE_URLS: http://+:8080
+      ASPNETCORE_ENVIRONMENT: Production
+    ports:
+      - "8080:8080"
+
+  jobs:
+    image: ghcr.io/neongraal/kete-kopaki-jobs:${IMAGE_TAG}
+    restart: always
+    environment:
+      DOTNET_ENVIRONMENT: Production
+
+  frontend:
+    image: ghcr.io/neongraal/kete-kopaki-frontend:${IMAGE_TAG}
+    restart: always
+    ports:
+      - "19006:19006"

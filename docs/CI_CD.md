@@ -2,13 +2,13 @@
 
 ## 1. Workflow Overview
 
-| Workflow         | Trigger                               | Purpose                                                              |
-| ---------------- | ------------------------------------- | -------------------------------------------------------------------- |
-| `ci.yml`         | Pull request, push to `main`          | Build, lint, test, and validate contracts                            |
-| `functional.yml` | Manual (`workflow_dispatch`) | Run full-stack functional tests in containerized deployment topology |
-| `security.yml`   | Pull request, scheduled daily         | Static and dependency security checks                                |
-| `cd-staging.yml` | Merge to `main`                       | Build/push images and deploy to staging                              |
-| `cd-prod.yml`    | Version tag/manual approval           | Promote release to production                                        |
+| Workflow         | Trigger                       | Purpose                                                              |
+| ---------------- | ----------------------------- | -------------------------------------------------------------------- |
+| `ci.yml`         | Pull request, push to `main`  | Build, lint, test, and validate contracts                            |
+| `functional.yml` | Manual (`workflow_dispatch`)  | Run full-stack functional tests in containerized deployment topology |
+| `security.yml`   | Pull request, scheduled daily | Static and dependency security checks                                |
+| `cd-staging.yml` | Merge to `main`               | Build/push images and deploy to staging                              |
+| `cd-prod.yml`    | Version tag/manual approval   | Promote release to production                                        |
 
 ## 2. CI Pipeline (`ci.yml`)
 
@@ -77,14 +77,14 @@ Current mode: manual-only trigger while functional coverage is being expanded an
 
 ## 6. Test Strategy in CI
 
-| Level             | Scope                                           | Where it runs       |
-| ----------------- | ----------------------------------------------- | ------------------- |
-| Static checks     | Linting, analyzers, type-checking               | PR + main           |
-| Unit tests        | Domain, application, frontend unit              | PR + main           |
-| Integration tests | API + DB + worker integration                   | PR + main           |
-| Contract tests    | API schema and consumer compatibility           | PR + main           |
+| Level             | Scope                                           | Where it runs        |
+| ----------------- | ----------------------------------------------- | -------------------- |
+| Static checks     | Linting, analyzers, type-checking               | PR + main            |
+| Unit tests        | Domain, application, frontend unit              | PR + main            |
+| Integration tests | API + DB + worker integration                   | PR + main            |
+| Contract tests    | API schema and consumer compatibility           | PR + main            |
 | Functional tests  | Full stack (frontend + API + jobs + DB + cache) | Manual run (current) |
-| E2E smoke         | Critical user journeys                          | Main and release    |
+| E2E smoke         | Critical user journeys                          | Main and release     |
 
 ## 7. Artifact and Release Governance
 

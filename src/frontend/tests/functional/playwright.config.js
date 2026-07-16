@@ -11,7 +11,7 @@ module.exports = defineConfig({
   reporter: [
     ["list"],
     ["html", { outputFolder: path.join(artifactsDir, "playwright-report") }],
-    ["junit", { outputFile: path.join(artifactsDir, "junit.xml") }]
+    ["junit", { outputFile: path.join(artifactsDir, "junit.xml") }],
   ],
   testDir: "./specs",
   timeout: 30000,
@@ -19,6 +19,6 @@ module.exports = defineConfig({
     baseURL: process.env.BASE_URL ?? "http://localhost:19006",
     screenshot: "only-on-failure",
     trace: "retain-on-failure",
-    video: "retain-on-failure"
-  }
+    video: "retain-on-failure",
+  },
 });
